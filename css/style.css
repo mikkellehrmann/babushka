@@ -32,6 +32,14 @@ nav {
     text-align: center;
 }
 
+button:hover {
+    cursor: pointer;
+}
+
+.ret:hover {
+    cursor: pointer;
+}
+
 #popup {
     top: 0;
     width: 100vw;
