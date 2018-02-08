@@ -38,6 +38,7 @@ h2 {
     font-size: 2em;
     margin-top: 50px;
     text-align: center;
+    text-transform: capitalize;
 }
 
 h3 {
@@ -54,12 +55,12 @@ img {
 
 nav {
     text-align: center;
+    margin-top: 25px;
 }
 
 button {
     background-color: #eee;
     font-size: 1.1em;
-    margin-top: 25px;
     border: none;
     border-bottom: 2px solid #eee;
 }

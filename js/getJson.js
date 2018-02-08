@@ -7,6 +7,7 @@
  async function hentJson() {
      let jsonData = await fetch("json/menu.json");
      retter = await jsonData.json();
+     retter.sort((a, b) => a.navn.localeCompare(b.navn));
      visRetter(retter, "Menu");
      lavFiltre();
  }
@@ -80,4 +81,42 @@
      document.querySelector('#filter-drikkevarer').addEventListener("click", () => {
          visRetter(drikkevarer, "Drikkevarer");
      });
+ }
+
+
+ // Sorterings-valg med button's, js
+
+ document.querySelector(".alfa").addEventListener("click", alfasort);
+
+ function alfasort() {
+     retter.sort((a, b) => a.navn.localCompare(b.navn));
+     visRetter();
+     sletmarkering();
+     this.classList.add("markeret");
+ }
+
+ document.querySelector(".prisop").addEventListener("click", prisopsort);
+
+ function prisopsort() {
+     retter.sort((a, b) => a.pris - b.pris);
+     visRetter();
+     sletmarkering();
+     this.classList.add("markeret");
+ }
+
+
+ document.querySelector(".prisned").addEventListener("click", prisnedsort);
+
+ function prisnedsort() {
+     console.log("prisnedsort");
+     retter.sort((a, b) => b.pris - a.pris);
+     visRetter();
+     sletmarkering();
+     this.classList.add("markeret");
+ }
+
+ function sletmarkering() {
+     document.querySelector(".alfa").classList.remove("markeret");
+     document.querySelector(".prisop").classList.remove("markeret");
+     document.querySelector(".prisned").classList.remove("markeret");
  }
