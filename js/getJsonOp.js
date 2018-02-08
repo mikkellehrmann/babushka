@@ -111,30 +111,3 @@
       document.querySelector(".prisop").classList.remove("markeret");
       document.querySelector(".prisned").classList.remove("markeret");
   }*/
-
-
- // find events der indeholder de valgte kategorier
-
- /*let forretter = retter.filter(ret => ret.kategori == "forretter");
- let hovedretter = retter.filter(ret => ret.kategori == "hovedretter");
- let desserter = retter.filter(ret => ret.kategori == "desserter");
- let drikkevarer = retter.filter(ret => ret.kategori == "drikkevarer");
-
- //sorter retter efter kategori
- document.querySelector('#filter-alle').addEventListener("click", () => {
-     visRetter(retter, "Menu");
- });
-
- document.querySelector('#filter-forretter').addEventListener("click", () => {
-     visRetter(forretter, "Forretter");
-
- });
- document.querySelector('#filter-hovedretter').addEventListener("click", () => {
-     visRetter(hovedretter, "Hovedretter");
- });
- document.querySelector('#filter-desserter').addEventListener("click", () => {
-     visRetter(desserter, "Desserter");
- });
- document.querySelector('#filter-drikkevarer').addEventListener("click", () => {
-     visRetter(drikkevarer, "Drikkevarer");
- });*/
