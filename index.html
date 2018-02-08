@@ -8,23 +8,8 @@
 </head>
 
 <body>
-
-    <header>
-        <h1>Bistro Babushka</h1>
-        <nav>
-            <button id="filter-alle">Alle</button>
-            <button id="filter-forretter">Forretter</button>
-            <button id="filter-hovedretter">Hovedretter</button>
-            <button id="filter-desserter">Desserter</button>
-            <button id="filter-drikkevarer">Drikkevarer</button>
-
-<button class="alfa markeret">Alfabetisk</button>
-<button class="prisop">Stigende pris</button>
-<button class="prisned">Faldende pris</button>
-        </nav>
-    </header>
-
     <div id="popup">
+        <div id="popup-overlay"> </div>
         <div id="popupindhold">
             <img src="" alt="" class="billede" data-billede>
             <h2 class="titel" data-navn>navn</h2>
@@ -35,7 +20,36 @@
                 <p class="lang_beskrivelse" data-langbeskrivelse>lang beskrivelse</p>
             </details>
         </div>
+
     </div>
+
+    <header>
+        <h1>Bistro Babushka</h1>
+        <nav>
+            <button>Alle</button>
+            <button>Forretter</button>
+            <button>Hovedretter</button>
+            <button>Desserter</button>
+            <button>Drikkevarer</button>
+            <button>Side orders</button>
+        </nav>
+        <br>
+        <center>
+            <select class="sortering">
+			<option value="alfa">Alfabetisk</option>
+		 	<option value="prisop">Lav - høj pris</option>
+			<option value="prisned">Høj - lav pris</option>
+	    </select>
+            <br><br>
+            <button class="alfa markeret">Alfabetisk</button>
+            <button class="prisop">Stigende pris</button>
+            <button class="prisned">Faldende pris</button>
+            <br><br>
+            <input type="radio" checked name="sortorder" class="radioalfa">Alfabetisk
+            <input type="radio" name="sortorder" class="radioprisop">Stigende priser
+            <input type="radio" name="sortorder" class="radioprisned">Faldende priser
+        </center>
+    </header>
 
     <main>
         <h2 id="overskrift" data-overskrift>Menu</h2>
@@ -62,12 +76,3 @@
 </body>
 
 </html>
-
-<!--
-
-index-dyn.html
-index-dynFilterAlt.html
-index-dynStart.html
-index-All.html
-indexCats.html
--->

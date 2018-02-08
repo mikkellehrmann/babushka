@@ -1,5 +1,5 @@
  //Et tomt array oprettes - når json filen læses ind, skal data herind.
- let retter;
+ let retter = [];
  document.addEventListener("DOMContentLoaded", hentJson);
 
  // Her starter scriptet - når html'en er oprettet
@@ -7,40 +7,19 @@
  async function hentJson() {
      let jsonData = await fetch("json/menu.json");
      retter = await jsonData.json();
-     // console.log(retter);
-
-     document.querySelector("nav").addEventListener("click", () => {
-
-         //event.target, det element der har udløst dette event, toLowerCase, for at sætte teksten til småt, således scriptet kan læse den.
-
-         let kategori = event.target.textContent.toLowerCase();
-
-         // hvis kateori er forskellig fra "alle" skal overskriften være knappens tekst - ellers skal den være "menu"
-
-         // =! betyder, når kategorien er forskellig fra "alle", så gøres dette:
-         if (kategori != "alle") {
-             document.querySelector("[data-overskrift]").textContent = event.target.textContent;
-             let kat = retter.filter(ret => ret.kategori == kategori);
-             visRetter(kat);
-
-         } else {
-             visRetter(retter);
-             document.querySelector("[data-overskrift]").textContent = "Menu";
-         }
-     })
-
      retter.sort((a, b) => a.navn.localeCompare(b.navn));
-     visRetter(retter);
+     visRetter(retter, "Menu");
+     lavFiltre();
  }
 
- function visRetter(retter) {
+ function visRetter(retter, overskrift) {
      let menuTemplate = document.querySelector("[data-template]");
      let templateModtager = document.querySelector("[data-container]");
 
-     //console.log(retter);
+     console.log(retter);
 
      templateModtager.innerHTML = "";
-     //document.querySelector("#overskrift").textContent = overskrift;
+     document.querySelector("#overskrift").textContent = overskrift;
 
      //for hver ret vis dem i DOM
      retter.forEach(hverRet => {
@@ -72,27 +51,37 @@
              document.querySelector(".closeModal").addEventListener("click", closeModal => {
                  document.querySelector("#popup").style.visibility = "hidden";
              });
-
-             document.querySelector("#popup-overlay").addEventListener("click", closeModal => {
-                 document.querySelector("#popup").style.visibility = "hidden";
-             });
          }
      })
  }
 
+ function lavFiltre() {
+     // find events der indeholder de valgte kategorier
 
-  document.querySelector(".sortering").addEventListener("change", sortering);
+     let forretter = retter.filter(ret => ret.kategori == "forretter");
+     let hovedretter = retter.filter(ret => ret.kategori == "hovedretter");
+     let desserter = retter.filter(ret => ret.kategori == "desserter");
+     let drikkevarer = retter.filter(ret => ret.kategori == "drikkevarer");
 
-  function sortering() {
-      if (this.value == "alfa") {
-          retter.sort((a, b) => a.navn.localeCompare(b.navn));
-      } else if (this.value == "prisop") {
-          retter.sort((a, b) => a.pris - b.pris);
-      } else if (this.value == "prisned") {
-          retter.sort((a, b) => b.pris - a.pris);
-      };
-      visRetter(retter);
-  }
+     //sorter retter efter kategori
+     document.querySelector('#filter-alle').addEventListener("click", () => {
+         visRetter(retter, "Menu");
+     });
+
+     document.querySelector('#filter-forretter').addEventListener("click", () => {
+         visRetter(forretter, "Forretter");
+
+     });
+     document.querySelector('#filter-hovedretter').addEventListener("click", () => {
+         visRetter(hovedretter, "Hovedretter");
+     });
+     document.querySelector('#filter-desserter').addEventListener("click", () => {
+         visRetter(desserter, "Desserter");
+     });
+     document.querySelector('#filter-drikkevarer').addEventListener("click", () => {
+         visRetter(drikkevarer, "Drikkevarer");
+     });
+ }
 
 
  // Sorterings-valg med button's, js
@@ -100,8 +89,8 @@
  document.querySelector(".alfa").addEventListener("click", alfasort);
 
  function alfasort() {
-     retter.sort((a, b) => a.navn.localeCompare(b.navn));
-     visRetter(retter);
+     retter.sort((a, b) => a.navn.localCompare(b.navn));
+     visRetter();
      sletmarkering();
      this.classList.add("markeret");
  }
@@ -110,7 +99,7 @@
 
  function prisopsort() {
      retter.sort((a, b) => a.pris - b.pris);
-     visRetter(retter);
+     visRetter();
      sletmarkering();
      this.classList.add("markeret");
  }
@@ -121,7 +110,7 @@
  function prisnedsort() {
      console.log("prisnedsort");
      retter.sort((a, b) => b.pris - a.pris);
-     visRetter(retter);
+     visRetter();
      sletmarkering();
      this.classList.add("markeret");
  }
@@ -130,28 +119,4 @@
      document.querySelector(".alfa").classList.remove("markeret");
      document.querySelector(".prisop").classList.remove("markeret");
      document.querySelector(".prisned").classList.remove("markeret");
- }
-
-
- //RADIO BUTTONS
-
- document.querySelector(".radioalfa").addEventListener("change", radioalfa);
-
- function radioalfa() {
-     retter.sort((a, b) => a.navn.localeCompare(b.navn));
-     visRetter(retter);
- }
-
- document.querySelector(".radioprisop").addEventListener("change", radioprisop);
-
- function radioprisop() {
-     retter.sort((a, b) => a.pris - b.pris);
-     visRetter(retter);
- }
-
- document.querySelector(".radioprisned").addEventListener("change", radioprisned);
-
- function radioprisned() {
-     retter.sort((a, b) => b.pris - a.pris);
-     visRetter(retter);
  }
