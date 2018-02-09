@@ -1,5 +1,6 @@
  //Et tomt array oprettes - når json filen læses ind, skal data herind.
  let retter;
+ let visteRetter;
  document.addEventListener("DOMContentLoaded", hentJson);
 
  // Her starter scriptet - når html'en er oprettet
@@ -7,6 +8,7 @@
  async function hentJson() {
      let jsonData = await fetch("json/menu.json");
      retter = await jsonData.json();
+     visteRetter = retter;
      // console.log(retter);
 
      document.querySelector("nav").addEventListener("click", () => {
@@ -22,6 +24,7 @@
              document.querySelector("[data-overskrift]").textContent = event.target.textContent;
              let kat = retter.filter(ret => ret.kategori == kategori);
              visRetter(kat);
+             visteRetter = kat;
 
          } else {
              visRetter(retter);
@@ -29,8 +32,8 @@
          }
      })
 
-     retter.sort((a, b) => a.navn.localeCompare(b.navn));
-     visRetter(retter);
+     visteRetter.sort((a, b) => a.navn.localeCompare(b.navn));
+     visRetter(visteRetter);
  }
 
  function visRetter(retter) {
@@ -81,77 +84,78 @@
  }
 
 
-  document.querySelector(".sortering").addEventListener("change", sortering);
+ document.querySelector(".sortering").addEventListener("change", sortering);
 
-  function sortering() {
-      if (this.value == "alfa") {
-          retter.sort((a, b) => a.navn.localeCompare(b.navn));
-      } else if (this.value == "prisop") {
-          retter.sort((a, b) => a.pris - b.pris);
-      } else if (this.value == "prisned") {
-          retter.sort((a, b) => b.pris - a.pris);
-      };
-      visRetter(retter);
-  }
-
-
- // Sorterings-valg med button's, js
-
- document.querySelector(".alfa").addEventListener("click", alfasort);
-
- function alfasort() {
-     retter.sort((a, b) => a.navn.localeCompare(b.navn));
-     visRetter(retter);
-     sletmarkering();
-     this.classList.add("markeret");
- }
-
- document.querySelector(".prisop").addEventListener("click", prisopsort);
-
- function prisopsort() {
-     retter.sort((a, b) => a.pris - b.pris);
-     visRetter(retter);
-     sletmarkering();
-     this.classList.add("markeret");
+ function sortering() {
+     if (this.value == "alfa") {
+         visteRetter.sort((a, b) => a.navn.localeCompare(b.navn));
+     } else if (this.value == "prisop") {
+         visteRetter.sort((a, b) => a.pris - b.pris);
+     } else if (this.value == "prisned") {
+         visteRetter.sort((a, b) => b.pris - a.pris);
+     };
+     console.log(this.value)
+     visRetter(visteRetter);
  }
 
 
- document.querySelector(".prisned").addEventListener("click", prisnedsort);
+ /*// Sorterings-valg med button's, js
 
- function prisnedsort() {
-     console.log("prisnedsort");
-     retter.sort((a, b) => b.pris - a.pris);
-     visRetter(retter);
-     sletmarkering();
-     this.classList.add("markeret");
- }
+document.querySelector(".alfa").addEventListener("click", alfasort);
 
- function sletmarkering() {
-     document.querySelector(".alfa").classList.remove("markeret");
-     document.querySelector(".prisop").classList.remove("markeret");
-     document.querySelector(".prisned").classList.remove("markeret");
- }
+function alfasort() {
+    retter.sort((a, b) => a.navn.localeCompare(b.navn));
+    visRetter(visteRetter);
+    sletmarkering();
+    this.classList.add("markeret");
+}
+
+document.querySelector(".prisop").addEventListener("click", prisopsort);
+
+function prisopsort() {
+    retter.sort((a, b) => a.pris - b.pris);
+    visRetter(visteRetter);
+    sletmarkering();
+    this.classList.add("markeret");
+}
 
 
- //RADIO BUTTONS
+document.querySelector(".prisned").addEventListener("click", prisnedsort);
 
- document.querySelector(".radioalfa").addEventListener("change", radioalfa);
+function prisnedsort() {
+    console.log("prisnedsort");
+    retter.sort((a, b) => b.pris - a.pris);
+    visRetter(visteRetter);
+    sletmarkering();
+    this.classList.add("markeret");
+}
 
- function radioalfa() {
-     retter.sort((a, b) => a.navn.localeCompare(b.navn));
-     visRetter(retter);
- }
+function sletmarkering() {
+    document.querySelector(".alfa").classList.remove("markeret");
+    document.querySelector(".prisop").classList.remove("markeret");
+    document.querySelector(".prisned").classList.remove("markeret");
+}
 
- document.querySelector(".radioprisop").addEventListener("change", radioprisop);
 
- function radioprisop() {
-     retter.sort((a, b) => a.pris - b.pris);
-     visRetter(retter);
- }
+//RADIO BUTTONS
 
- document.querySelector(".radioprisned").addEventListener("change", radioprisned);
+document.querySelector(".radioalfa").addEventListener("change", radioalfa);
 
- function radioprisned() {
-     retter.sort((a, b) => b.pris - a.pris);
-     visRetter(retter);
- }
+function radioalfa() {
+    retter.sort((a, b) => a.navn.localeCompare(b.navn));
+    visRetter(visteRetter);
+}
+
+document.querySelector(".radioprisop").addEventListener("change", radioprisop);
+
+function radioprisop() {
+    retter.sort((a, b) => a.pris - b.pris);
+    visRetter(visteRetter);
+}
+
+document.querySelector(".radioprisned").addEventListener("change", radioprisned);
+
+function radioprisned() {
+    retter.sort((a, b) => b.pris - a.pris);
+    visRetter(visteRetter);
+}*/
