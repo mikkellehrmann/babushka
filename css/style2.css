@@ -1,0 +1,172 @@
+body {
+    font-family: 'Arial';
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #eee;
+    padding: 25px;
+}
+
+footer {
+    background-color: #eee;
+    padding: 25px;
+}
+
+footer section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/** OVERSKRIFTER **/
+
+h1 {
+    padding: 0;
+    margin: 0;
+    font-size: 2em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+
+h2 {
+    padding: 0;
+    margin: 0;
+    font-size: 2em;
+    margin-top: 50px;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+nav {
+    text-align: center;
+    margin-top: 25px;
+}
+
+button {
+    background-color: #eee;
+    font-size: 1.1em;
+    border: none;
+    border-bottom: 2px solid #eee;
+}
+
+button:hover {
+    cursor: pointer;
+    border-bottom: 2px solid #c3c3c3;
+}
+
+button:focus {
+    outline: 0;
+    border-bottom: 2px solid #c3c3c3;
+}
+
+/** RET **/
+
+h3 {
+    background-color: rgba(255, 255, 255, 0.67);
+    padding: 3px;
+    font-size: 1.1em;
+}
+
+#menu-container {
+    display: grid;
+    margin: 0 auto;
+    max-width: 1280px;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 5px;
+    padding: 20px 50px 50px 50px;
+}
+
+article {
+    position: relative;
+    background-color: green;
+    z-index: 3;
+}
+
+article:hover {
+    cursor: pointer;
+}
+
+
+/** POPUP **/
+
+/** POPUP **/
+
+/** POPUP **/
+
+#popup {
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    position: fixed;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+#popup img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+#popup-overlay {
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.80);
+}
+
+#popup-overlay:hover {
+    cursor: pointer;
+}
+
+#popupindhold {
+    position: fixed;
+    width: 80vw;
+    height: 50vh;
+    background: #fff;
+    left: 10vw;
+    top: 25vh;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+
+/*** SORTERING ***/
+
+.markeret {
+    background-color: red;
+    color: white;
+}
+
+
+
+/** MEDIA QUERYES **/
+
+@media screen and (min-width: 500px) {
+    #menu-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (min-width: 800px) {
+        #menu-container {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        #popupindhold {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+
+    }

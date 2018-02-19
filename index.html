@@ -3,14 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Bistro Babushka</title>
     <link type="text/css" href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
+    <!-- POPUP boks, med de enkelte retter -->
     <div id="popup">
         <div id="popup-overlay"> </div>
-        <div id="popupindhold">
+        <div id="popup-content">
             <div class="left">
                 <img src="" alt="" class="billede" data-billede>
             </div>
@@ -24,59 +25,54 @@
                 </details>
             </div>
         </div>
-
     </div>
 
-    <header>
-        <h1>Bistro Babushka</h1>
-        <nav>
-            <button>Alle</button>
-            <button>Forretter</button>
-            <button>Hovedretter</button>
-            <button>Desserter</button>
-            <button>Drikkevarer</button>
-            <button>Side orders</button>
-        </nav>
-        <br>
-        <center>
+    <!-- HEADER med nav og overskrift -->
+    <div class="wrapper">
+        <header>
+            <h1>Bistro Babushka</h1>
+            <nav>
+                <button>Alle</button>
+                <button>Forretter</button>
+                <button>Hovedretter</button>
+                <button>Desserter</button>
+                <button>Drikkevarer</button>
+                <button>Side orders</button>
+            </nav>
+            <br>
             <select class="sortering">
 			    <option value="alfa">Alfabetisk</option>
 		 	    <option value="prisop">Lav - høj pris</option>
 			    <option value="prisned">Høj - lav    pris</option>
 	    </select>
-            <!--
-            <br><br>
-            <button class="alfa markeret">Alfabetisk</button>
-            <button class="prisop">Stigende pris</button>
-            <button class="prisned">Faldende pris</button>
-            <br><br>
-            <input type="radio" checked name="sortorder" class="radioalfa">Alfabetisk
-            <input type="radio" name="sortorder" class="radioprisop">Stigende priser
-            <input type="radio" name="sortorder" class="radioprisned">Faldende priser
--->
-        </center>
-    </header>
+        </header>
 
-    <main>
-        <h2 id="overskrift" data-overskrift>Menu</h2>
-        <section id="menu-container" data-container></section>
-    </main>
+        <!-- MAIN section, menuen -->
+        <main>
+            <h2 id="overskrift" data-overskrift>Menu</h2>
+            <section id="menu-container" data-container></section>
+        </main>
+
+        <!-- FOOTER, adresse og åbningstider -->
+        <footer>
+            <section>
+                <address>Adresse:<br>Grønnegade 97<br>1234 København K</address>
+                <aside>Åbningstider:<br>Mandag - fredag 10:30 22:00</aside>
+            </section>
+        </footer>
+    </div>
+
+    <!-- Template -->
 
     <template data-template>
         <article class="ret">
+           <div class="ret-overlay"></div>
            <img src="" alt="" class="billede" data-billede>
-            <h3 class="titel" data-navn></h3>
-            <p class="kort_beskrivelse" data-kortbeskrivelse></p>
-             <div><span class="pris" data-pris></span> kr.</div>
+           <h3 class="titel" data-navn></h3>
+           <p class="kort_beskrivelse" data-kortbeskrivelse></p>
+           <div><span class="pris" data-pris></span> kr.</div>
         </article>
     </template>
-
-    <footer>
-        <section>
-            <address>Adresse:<br>Grønnegade 97<br>1234 København K</address>
-            <aside>Åbningstider:<br>Mandag - fredag 10:30 22:00</aside>
-        </section>
-    </footer>
 
     <script src="js/getJson.js"></script>
 </body>
