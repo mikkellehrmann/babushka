@@ -50,11 +50,12 @@
          let klon = menuTemplate.cloneNode(true).content;
          klon.querySelector("[data-navn]").textContent = hverRet.navn;
          klon.querySelector("[data-kortbeskrivelse]").textContent = hverRet.kortbeskrivelse;
-         klon.querySelector("[data-pris]").textContent = hverRet.pris;
+
          //                klon.querySelector(".billede").setAttribute("src", "imgs/small/" + ret.billede + "-sm.jpg");
 
          klon.querySelector("[data-billede]").src = "imgs/small/" + hverRet.billede + "-sm.jpg";
          klon.querySelector("[data-billede]").alt = "Billede af " + hverRet.navn;
+         klon.querySelector("[data-pris]").textContent = hverRet.pris;
          klon.querySelector(".ret").setAttribute("data-id", hverRet.id);
          klon.querySelector(".ret").addEventListener("click", openModal);
 
@@ -70,7 +71,10 @@
              document.querySelector("#popup").style.visibility = "visible";
              document.querySelector("[data-navn]").textContent = ret.navn;
              document.querySelector("[data-langbeskrivelse]").textContent = ret.langbeskrivelse;
-             document.querySelector("[data-billede]").src = "../imgs/small/" + ret.billede + "-sm.jpg";
+             document.querySelector("[data-pris]").textContent = ret.pris;
+
+             document.querySelector("[data-billede]").src = "imgs/medium/" + ret.billede + "-md.jpg";
+             document.querySelector("[data-billede]").alt = "Billede af " + ret.navn;
 
              document.querySelector(".closeModal").addEventListener("click", closeModal => {
                  document.querySelector("#popup").style.visibility = "hidden";

@@ -11,14 +11,18 @@
     <div id="popup">
         <div id="popup-overlay"> </div>
         <div id="popupindhold">
-            <img src="" alt="" class="billede" data-billede>
-            <h2 class="titel" data-navn>navn</h2>
-            <div><span class="pris" data-pris></span> kr.</div>
-            <button class="closeModal">Close</button>
-            <details open>
-                <summary>Beskrivelse</summary>
-                <p class="lang_beskrivelse" data-langbeskrivelse>lang beskrivelse</p>
-            </details>
+            <div class="left">
+                <img src="" alt="" class="billede" data-billede>
+            </div>
+            <div class="right">
+                <h2 class="titel" data-navn>navn</h2>
+                <div><span class="pris" data-pris></span> kr.</div>
+                <button class="closeModal">Close</button>
+                <details open>
+                    <summary>Beskrivelse</summary>
+                    <p class="lang_beskrivelse" data-langbeskrivelse>lang beskrivelse</p>
+                </details>
+            </div>
         </div>
 
     </div>
@@ -36,10 +40,11 @@
         <br>
         <center>
             <select class="sortering">
-			<option value="alfa">Alfabetisk</option>
-		 	<option value="prisop">Lav - høj pris</option>
-			<option value="prisned">Høj - lav pris</option>
+			    <option value="alfa">Alfabetisk</option>
+		 	    <option value="prisop">Lav - høj pris</option>
+			    <option value="prisned">Høj - lav    pris</option>
 	    </select>
+            <!--
             <br><br>
             <button class="alfa markeret">Alfabetisk</button>
             <button class="prisop">Stigende pris</button>
@@ -48,6 +53,7 @@
             <input type="radio" checked name="sortorder" class="radioalfa">Alfabetisk
             <input type="radio" name="sortorder" class="radioprisop">Stigende priser
             <input type="radio" name="sortorder" class="radioprisned">Faldende priser
+-->
         </center>
     </header>
 
@@ -58,8 +64,8 @@
 
     <template data-template>
         <article class="ret">
+           <img src="" alt="" class="billede" data-billede>
             <h3 class="titel" data-navn></h3>
-            <img src="" alt="" class="billede" data-billede>
             <p class="kort_beskrivelse" data-kortbeskrivelse></p>
              <div><span class="pris" data-pris></span> kr.</div>
         </article>

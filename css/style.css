@@ -46,11 +46,8 @@ h3 {
 }
 
 img {
+    object-fit: cover;
     width: 100%;
-}
-
-#popup img {
-    width: 50%;
 }
 
 nav {
@@ -70,19 +67,38 @@ button:hover {
     border-bottom: 2px solid #c3c3c3;
 }
 
+button:focus {
+    outline: 0;
+    border-bottom: 2px solid #c3c3c3;
+}
+
+/** RET **/
+
 #menu-container {
     display: grid;
     margin: 0 auto;
     max-width: 1280px;
     grid-template-columns: repeat(1, 1fr);
-    grid-gap: 40px;
+    grid-gap: 5px;
     padding: 20px 50px 50px 50px;
+}
+
+article {
+    background-color: green;
+}
+
+.ret img {
+    height: 100%;
 }
 
 article:hover {
     cursor: pointer;
 }
 
+
+/** POPUP **/
+
+/** POPUP **/
 
 /** POPUP **/
 
@@ -116,6 +132,13 @@ article:hover {
     position: absolute;
     left: 10vw;
     top: 25vh;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+#popup img {
+    object-fit: cover;
+
 }
 
 
@@ -138,5 +161,13 @@ article:hover {
     @media screen and (min-width: 800px) {
         #menu-container {
             grid-template-columns: repeat(3, 1fr);
+        }
+
+        #popupindhold {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        #popup img {
+            height: 100%;
         }
     }
