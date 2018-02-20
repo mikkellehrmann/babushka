@@ -53,7 +53,7 @@
 
          //                klon.querySelector(".billede").setAttribute("src", "imgs/small/" + ret.billede + "-sm.jpg");
 
-         klon.querySelector("[data-billede]").src = "imgs/small/" + hverRet.billede + "-sm.jpg";
+         klon.querySelector("[data-billede]").src = "imgs/medium/" + hverRet.billede + "-md.jpg";
          klon.querySelector("[data-billede]").alt = "Billede af " + hverRet.navn;
          klon.querySelector("[data-pris]").textContent = hverRet.pris;
          klon.querySelector(".ret").setAttribute("data-id", hverRet.id);
@@ -68,20 +68,23 @@
      let single = retter.find(ret => {
          // hvis myId = ret.id så vis indhold
          if (myId == ret.id) {
-             document.querySelector("#popup").style.visibility = "visible";
+             document.querySelector("#popup").style.opacity = "1";
              document.querySelector("[data-navn]").textContent = ret.navn;
              document.querySelector("[data-langbeskrivelse]").textContent = ret.langbeskrivelse;
              document.querySelector("[data-pris]").textContent = ret.pris;
 
-             document.querySelector("[data-billede]").src = "imgs/medium/" + ret.billede + "-md.jpg";
+             document.querySelector("[data-popbillede]").src = "imgs/large/" + ret.billede + ".jpg";
              document.querySelector("[data-billede]").alt = "Billede af " + ret.navn;
 
+             document.querySelector("#popup").style.pointerEvents = "auto";
              document.querySelector(".closeModal").addEventListener("click", closeModal => {
-                 document.querySelector("#popup").style.visibility = "hidden";
+                 document.querySelector("#popup").style.opacity = "0";
+                 document.querySelector("#popup").style.pointerEvents = "none";
              });
 
              document.querySelector("#popup-overlay").addEventListener("click", closeModal => {
-                 document.querySelector("#popup").style.visibility = "hidden";
+                 document.querySelector("#popup").style.opacity = "0";
+                 document.querySelector("#popup").style.pointerEvents = "none";
              });
          }
      })
@@ -101,6 +104,21 @@
      console.log(this.value)
      visRetter(visteRetter);
  }
+
+
+
+/*BUUURGER MENU
+function toggleMenu() {
+    document.querySelector(".burger").classList.toggle("change");
+    document.querySelector("nav").classList.toggle("show");
+}
+
+document.querySelector(".burger").addEventListener("click", toggleMenu);
+document.querySelector("nav").addEventListener("click", toggleMenu);
+*/
+
+
+
 
 
  /*// Sorterings-valg med button's, js
