@@ -68,8 +68,11 @@
      let single = retter.find(ret => {
          // hvis myId = ret.id så vis indhold
          if (myId == ret.id) {
+
+             document.querySelector('body').classList.add('stop-scrolling');
              document.querySelector("#popup").style.opacity = "1";
              document.querySelector("[data-navn]").textContent = ret.navn;
+             document.querySelector("[data-navn2]").textContent = ret.navn;
              document.querySelector("[data-langbeskrivelse]").textContent = ret.langbeskrivelse;
              document.querySelector("[data-pris]").textContent = ret.pris;
 
@@ -80,6 +83,8 @@
              document.querySelector(".closeModal").addEventListener("click", closeModal => {
                  document.querySelector("#popup").style.opacity = "0";
                  document.querySelector("#popup").style.pointerEvents = "none";
+
+                 document.querySelector('body').classList.remove('stop-scrolling');
              });
 
              document.querySelector("#popup-overlay").addEventListener("click", closeModal => {

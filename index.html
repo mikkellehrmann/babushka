@@ -12,14 +12,15 @@
     <!-- POPUP boks, med de enkelte retter -->
     <div id="popup">
         <div id="popup-overlay"></div>
+        <h2 class="titel2" data-navn2>navn</h2>
         <div id="popup-content">
+           <button class="closeModal">x</button>
             <div class="left">
                 <img src="" alt="" class="billede" data-popbillede>
             </div>
             <div class="right">
                 <h2 class="titel" data-navn>navn</h2>
                 <div><span class="pris" data-pris></span> kr.</div>
-                <button class="closeModal">x</button>
                 <details open>
                     <summary>Beskrivelse</summary>
                     <p class="lang_beskrivelse" data-langbeskrivelse>lang beskrivelse</p>
@@ -77,7 +78,6 @@
     <template data-template>
         <article class="ret">
            <div class="ret-overlay"></div>
-
            <img src="" alt="" class="billede" data-billede>
            <div class="ret-white">
            <h3 class="ret-titel" data-navn></h3>
