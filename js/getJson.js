@@ -53,7 +53,7 @@
 
          //                klon.querySelector(".billede").setAttribute("src", "imgs/small/" + ret.billede + "-sm.jpg");
 
-         klon.querySelector("[data-billede]").src = "imgs/medium/" + hverRet.billede + "-md.jpg";
+         klon.querySelector("[data-billede]").src = "imgs/fixed/" + hverRet.billede + ".jpg";
          klon.querySelector("[data-billede]").alt = "Billede af " + hverRet.navn;
          klon.querySelector("[data-pris]").textContent = hverRet.pris;
          klon.querySelector(".ret").setAttribute("data-id", hverRet.id);
